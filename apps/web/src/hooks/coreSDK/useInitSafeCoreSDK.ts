@@ -13,16 +13,21 @@ import { asError } from '@/services/exceptions/utils'
 
 export const useInitSafeCoreSDK = () => {
   const { safe, safeLoaded } = useSafeInfo()
+  console.log("🚀 ~ useInitSafeCoreSDK ~ safeLoaded:", safeLoaded)
   const dispatch = useAppDispatch()
   const web3ReadOnly = useWeb3ReadOnly()
+  console.log("🚀 ~ useInitSafeCoreSDK ~ web3ReadOnly:", web3ReadOnly)
 
   const { query } = useRouter()
   const prefixedAddress = Array.isArray(query.safe) ? query.safe[0] : query.safe
   const { address } = parsePrefixedAddress(prefixedAddress || '')
+  console.log("🚀 ~ useInitSafeCoreSDK ~ address:", address)
   const undeployedSafe = useAppSelector((state) => selectUndeployedSafe(state, safe.chainId, address))
+  console.log("🚀 ~ useEffect ~ safe.address.value):", safe.address.value)
 
   useEffect(() => {
     if (!safeLoaded || !web3ReadOnly || !sameAddress(address, safe.address.value)) {
+      console.log("🚀 ~ useEffect ~ safeLoaded:", safeLoaded)
       // If we don't reset the SDK, a previous Safe could remain in the store
       setSafeSDK(undefined)
       return
@@ -40,6 +45,8 @@ export const useInitSafeCoreSDK = () => {
     })
       .then(setSafeSDK)
       .catch((_e) => {
+        console.log("🚀 ~ useEffect ~ _e:", _e)
+        
         const e = asError(_e)
         dispatch(
           showNotification({

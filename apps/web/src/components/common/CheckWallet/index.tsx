@@ -42,9 +42,11 @@ const CheckWallet = ({
   const connectWallet = useConnectWallet()
   const isWrongChain = useIsWrongChain()
   const sdk = useSafeSDK()
+  console.log("🚀 ~ sdk:", sdk)
   const isProposer = useIsWalletProposer()
 
   const { safe, safeLoaded } = useSafeInfo()
+  console.log("🚀 ~ safeLoaded:", safeLoaded)
 
   const isNestedSafeOwner = useIsNestedSafeOwner()
 

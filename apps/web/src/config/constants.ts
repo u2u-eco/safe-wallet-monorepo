@@ -114,3 +114,34 @@ export const SAFE_PASS_URL = 'community.safe.global'
 export const ECOSYSTEM_ID_ADDRESS =
   process.env.NEXT_PUBLIC_ECOSYSTEM_ID_ADDRESS || '0x0000000000000000000000000000000000000000'
 export const MULTICHAIN_HELP_ARTICLE = `${HELP_CENTER_URL}/en/articles/222612-multi-chain-safe`
+
+export const SAFE_DEPLOYMENT: any = {
+  '2484': {
+    safe: '0x85537a85f40c8B23e03bf95087f00b6bA1c11b3D',
+    safeL2: '0x0859B89940E228513a8774079cB098c9ab40937D',
+    safeProxyFactoryAddress: "0xB0137947F6940C76F1C39a21cAaBb52Cd2509069",
+    safeSingletonAddress: "0x914d7Fec6aaC8cd542e72Bca78B30650d45643d7",
+    safeWebAuthnSharedSignerAddress: "",
+    simulateTxAccessorAddress: "0x07EfA797c55B5DdE3698d876b277aBb6B893654C",
+    signMessageLibAddress: "0x9AA451710fab48E673A413039C92A219fB016347",
+    safeWebAuthnSignerFactoryAddress: "",
+    multiSendAddress: "0x218543288004CD07832472D464648173c77D7eB7",
+    multiSendCallOnlyAddress: "0x3EbB62B65423a33a846416ff7Ce9BE6f9b86b3B4",
+    fallbackHandlerAddress: "0x0c5c38DF451c7D467B1FeC87ba942115fc1195A6",
+    createCallAddress: "0x2Ef5ECfbea521449E4De05EDB1ce63B75eDA90B4"
+  },
+  '39': {
+    safe: '0x85537a85f40c8B23e03bf95087f00b6bA1c11b3D',
+    safeL2: '0x0859B89940E228513a8774079cB098c9ab40937D', // Master copy
+    safeProxyFactoryAddress: "0xB0137947F6940C76F1C39a21cAaBb52Cd2509069", // Proxy factory
+    safeSingletonAddress: "0x914d7Fec6aaC8cd542e72Bca78B30650d45643d7",
+    safeWebAuthnSharedSignerAddress: "",
+    simulateTxAccessorAddress: "0x07EfA797c55B5DdE3698d876b277aBb6B893654C",
+    signMessageLibAddress: "0x9AA451710fab48E673A413039C92A219fB016347",
+    safeWebAuthnSignerFactoryAddress: "",
+    multiSendAddress: "0x218543288004CD07832472D464648173c77D7eB7",
+    multiSendCallOnlyAddress: "0x3EbB62B65423a33a846416ff7Ce9BE6f9b86b3B4",
+    fallbackHandlerAddress: "0x0c5c38DF451c7D467B1FeC87ba942115fc1195A6",
+    createCallAddress: "0x2Ef5ECfbea521449E4De05EDB1ce63B75eDA90B4"
+  }
+}

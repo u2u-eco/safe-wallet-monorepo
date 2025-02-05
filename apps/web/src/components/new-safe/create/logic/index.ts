@@ -9,7 +9,7 @@ import type { UrlObject } from 'url'
 import { AppRoutes } from '@/config/routes'
 import { SAFE_APPS_EVENTS, trackEvent } from '@/services/analytics'
 import { predictSafeAddress, SafeFactory, SafeProvider } from '@safe-global/protocol-kit'
-import type { DeploySafeProps, PredictedSafeProps } from '@safe-global/protocol-kit'
+import type { ContractNetworksConfig, DeploySafeProps, PredictedSafeProps } from '@safe-global/protocol-kit'
 import { isValidSafeVersion } from '@/hooks/coreSDK/safeCoreSDK'
 
 import { backOff } from 'exponential-backoff'
@@ -22,7 +22,7 @@ import {
   getSafeSingletonDeployment,
   getSafeToL2SetupDeployment,
 } from '@safe-global/safe-deployments'
-import { ECOSYSTEM_ID_ADDRESS } from '@/config/constants'
+import { ECOSYSTEM_ID_ADDRESS, SAFE_DEPLOYMENT } from '@/config/constants'
 import type { ReplayedSafeProps, UndeployedSafeProps } from '@/store/slices'
 import { activateReplayedSafe, isPredictedSafeProps } from '@/features/counterfactual/utils'
 import { getSafeContractDeployment } from '@/services/contracts/deployments'
@@ -44,7 +44,8 @@ const getSafeFactory = async (
   if (!isValidSafeVersion(safeVersion)) {
     throw new Error('Invalid Safe version')
   }
-  return SafeFactory.init({ provider, safeVersion, isL1SafeSingleton })
+  const contractNetworkConfig = SAFE_DEPLOYMENT
+  return SafeFactory.init({ provider, safeVersion, isL1SafeSingleton, contractNetworks: contractNetworkConfig })
 }
 
 /**
@@ -59,6 +60,7 @@ export const createNewSafe = async (
   callback: (txHash: string) => void,
   isL1SafeSingleton?: boolean,
 ): Promise<void> => {
+  console.log("🚀 ~ chain:", chain)
   const safeFactory = await getSafeFactory(provider, safeVersion, isL1SafeSingleton)
 
   if (isPredictedSafeProps(undeployedSafeProps)) {
@@ -218,15 +220,15 @@ export const createNewUndeployedSafeWithoutSalt = (
     version: safeVersion,
     network: chain.chainId,
   })
-  const fallbackHandlerAddress = fallbackHandlerDeployment?.networkAddresses[chain.chainId]
+  const fallbackHandlerAddress = '0x0c5c38DF451c7D467B1FeC87ba942115fc1195A6' || fallbackHandlerDeployment?.networkAddresses[chain.chainId]
   const safeL2Deployment = getSafeL2SingletonDeployment({ version: safeVersion, network: chain.chainId })
-  const safeL2Address = safeL2Deployment?.networkAddresses[chain.chainId]
+  const safeL2Address = '0x0859B89940E228513a8774079cB098c9ab40937D' || safeL2Deployment?.networkAddresses[chain.chainId]
 
   const safeL1Deployment = getSafeSingletonDeployment({ version: safeVersion, network: chain.chainId })
-  const safeL1Address = safeL1Deployment?.networkAddresses[chain.chainId]
+  const safeL1Address = '0x85537a85f40c8B23e03bf95087f00b6bA1c11b3D' || safeL1Deployment?.networkAddresses[chain.chainId]
 
   const safeFactoryDeployment = getProxyFactoryDeployment({ version: safeVersion, network: chain.chainId })
-  const safeFactoryAddress = safeFactoryDeployment?.networkAddresses[chain.chainId]
+  const safeFactoryAddress = '0xB0137947F6940C76F1C39a21cAaBb52Cd2509069' || safeFactoryDeployment?.networkAddresses[chain.chainId]
 
   if (!safeL2Address || !safeL1Address || !safeFactoryAddress || !fallbackHandlerAddress) {
     throw new Error('No Safe deployment found')
@@ -239,6 +241,7 @@ export const createNewUndeployedSafeWithoutSalt = (
   // Only do migration if the chain supports multiChain deployments and has a SafeToL2Setup deployment
   const includeMigration =
     hasMultiChainCreationFeatures(chain) && semverSatisfies(safeVersion, '>=1.4.1') && Boolean(safeToL2SetupAddress)
+  console.log("🚀 ~ includeMigration:", includeMigration)
 
   const masterCopy = includeMigration ? safeL1Address : chain.l2 ? safeL2Address : safeL1Address
 
