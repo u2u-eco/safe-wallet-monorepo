@@ -9,7 +9,7 @@ import type { UrlObject } from 'url'
 import { AppRoutes } from '@/config/routes'
 import { SAFE_APPS_EVENTS, trackEvent } from '@/services/analytics'
 import { predictSafeAddress, SafeFactory, SafeProvider } from '@safe-global/protocol-kit'
-import type { ContractNetworksConfig, DeploySafeProps, PredictedSafeProps } from '@safe-global/protocol-kit'
+import type { DeploySafeProps, PredictedSafeProps } from '@safe-global/protocol-kit'
 import { isValidSafeVersion } from '@/hooks/coreSDK/safeCoreSDK'
 
 import { backOff } from 'exponential-backoff'
@@ -60,7 +60,6 @@ export const createNewSafe = async (
   callback: (txHash: string) => void,
   isL1SafeSingleton?: boolean,
 ): Promise<void> => {
-  console.log("🚀 ~ chain:", chain)
   const safeFactory = await getSafeFactory(provider, safeVersion, isL1SafeSingleton)
 
   if (isPredictedSafeProps(undeployedSafeProps)) {
@@ -241,7 +240,6 @@ export const createNewUndeployedSafeWithoutSalt = (
   // Only do migration if the chain supports multiChain deployments and has a SafeToL2Setup deployment
   const includeMigration =
     hasMultiChainCreationFeatures(chain) && semverSatisfies(safeVersion, '>=1.4.1') && Boolean(safeToL2SetupAddress)
-  console.log("🚀 ~ includeMigration:", includeMigration)
 
   const masterCopy = includeMigration ? safeL1Address : chain.l2 ? safeL2Address : safeL1Address
 

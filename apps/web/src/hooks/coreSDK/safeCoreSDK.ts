@@ -57,7 +57,6 @@ export const initSafeSDK = async ({
   undeployedSafe,
 }: SafeCoreSDKProps): Promise<Safe | undefined> => {
   const providerNetwork = (await provider.getNetwork()).chainId
-  console.log("🚀 ~ providerNetwork:", providerNetwork)
   if (providerNetwork !== BigInt(chainId)) return
 
   const safeVersion = version ?? (await Gnosis_safe__factory.connect(address, provider).VERSION())
@@ -70,9 +69,7 @@ export const initSafeSDK = async ({
     const safeL2Deployment = SAFE_DEPLOYMENT[chainId].safeL2 || getSafeL2SingletonDeployments({ network: chainId, version: safeVersion })
 
     // isL1SafeSingleton = isInDeployments(masterCopy, safeL1Deployment?.networkAddresses[chainId])
-    // console.log("🚀 ~ isL1SafeSingleton:", isL1SafeSingleton)
     // const isL2SafeMasterCopy = isInDeployments(masterCopy, safeL2Deployment?.networkAddresses[chainId])
-    // console.log("🚀 ~ isL2SafeMasterCopy:", isL2SafeMasterCopy)
 
     // // Unknown deployment, which we do not want to support
     // if (!isL1SafeSingleton && !isL2SafeMasterCopy) {

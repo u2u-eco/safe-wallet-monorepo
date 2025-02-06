@@ -352,10 +352,8 @@ const ReviewStep = ({ data, onSubmit, onBack, setStep }: StepRenderProps<NewSafe
         )
       }
     } catch (_err) {
-      console.log("🚀 ~ createSafe ~ _err:", _err)
       
       const error = asError(_err)
-      console.log("🚀 ~ createSafe ~ error:", error)
       const submitError = isWalletRejection(error)
         ? 'User rejected signing.'
         : 'Error creating the Safe Account. Please try again later.'

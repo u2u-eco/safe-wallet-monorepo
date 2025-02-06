@@ -8,7 +8,12 @@ WORKDIR /app
 COPY . .
 
 # Set working directory to the web app
-WORKDIR apps/web
+WORKDIR /app/packages/safe-core-sdk-v1
+RUN yarn
+RUN yarn build
+
+# Set working directory to the web app
+WORKDIR app/apps/web
 
 # Enable corepack and configure yarn
 RUN corepack enable
