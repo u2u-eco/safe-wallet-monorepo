@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { ERC20__factory } from '@/types/contracts'
 import { UNLIMITED_APPROVAL_AMOUNT } from '@/utils/tokens'
 import type { BaseTransaction } from '@safe-global/safe-apps-sdk'

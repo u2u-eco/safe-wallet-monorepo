@@ -1,3 +1,4 @@
+/* eslint-disable */
 import type { SafeVersion } from '@safe-global/safe-core-sdk-types'
 import { type Eip1193Provider, type Provider } from 'ethers'
 import semverSatisfies from 'semver/functions/satisfies'
@@ -18,8 +19,8 @@ import { getLatestSafeVersion } from '@/utils/chains'
 import {
   getCompatibilityFallbackHandlerDeployment,
   getProxyFactoryDeployment,
-  getSafeL2SingletonDeployment,
-  getSafeSingletonDeployment,
+  // getSafeL2SingletonDeployment,
+  // getSafeSingletonDeployment,
   getSafeToL2SetupDeployment,
 } from '@safe-global/safe-deployments'
 import { ECOSYSTEM_ID_ADDRESS, SAFE_DEPLOYMENT } from '@/config/constants'
@@ -215,19 +216,22 @@ export const createNewUndeployedSafeWithoutSalt = (
   chain: ChainInfo,
 ): UndeployedSafeWithoutSalt => {
   // Create universal deployment Data across chains:
-  const fallbackHandlerDeployment = getCompatibilityFallbackHandlerDeployment({
-    version: safeVersion,
-    network: chain.chainId,
-  })
-  const fallbackHandlerAddress = '0x0c5c38DF451c7D467B1FeC87ba942115fc1195A6' || fallbackHandlerDeployment?.networkAddresses[chain.chainId]
-  const safeL2Deployment = getSafeL2SingletonDeployment({ version: safeVersion, network: chain.chainId })
-  const safeL2Address = '0x0859B89940E228513a8774079cB098c9ab40937D' || safeL2Deployment?.networkAddresses[chain.chainId]
 
-  const safeL1Deployment = getSafeSingletonDeployment({ version: safeVersion, network: chain.chainId })
-  const safeL1Address = '0x85537a85f40c8B23e03bf95087f00b6bA1c11b3D' || safeL1Deployment?.networkAddresses[chain.chainId]
+  const deploymentAddress = SAFE_DEPLOYMENT
 
-  const safeFactoryDeployment = getProxyFactoryDeployment({ version: safeVersion, network: chain.chainId })
-  const safeFactoryAddress = '0xB0137947F6940C76F1C39a21cAaBb52Cd2509069' || safeFactoryDeployment?.networkAddresses[chain.chainId]
+  const fallbackHandlerAddress = deploymentAddress[chain.chainId].fallbackHandlerAddress
+
+  // const safeL2Deployment = getSafeL2SingletonDeployment({ version: safeVersion, network: chain.chainId })
+
+  const safeL2Address = deploymentAddress[chain.chainId].safeL2
+
+  // const safeL1Deployment = getSafeSingletonDeployment({ version: safeVersion, network: chain.chainId })
+
+  const safeL1Address = deploymentAddress[chain.chainId].safe
+
+  // const safeFactoryDeployment = getProxyFactoryDeployment({ version: safeVersion, network: chain.chainId })
+
+  const safeFactoryAddress = deploymentAddress[chain.chainId].safeProxyFactoryAddress
 
   if (!safeL2Address || !safeL1Address || !safeFactoryAddress || !fallbackHandlerAddress) {
     throw new Error('No Safe deployment found')

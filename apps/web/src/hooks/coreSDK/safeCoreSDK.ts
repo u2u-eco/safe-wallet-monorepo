@@ -1,18 +1,18 @@
+/* eslint-disable */
+
 import chains from '@/config/chains'
+import { SAFE_DEPLOYMENT } from '@/config/constants'
 import type { UndeployedSafe } from '@/features/counterfactual/store/undeployedSafesSlice'
-import { getSafeSingletonDeployments, getSafeL2SingletonDeployments } from '@safe-global/safe-deployments'
+import { isPredictedSafeProps, isReplayedSafeProps } from '@/features/counterfactual/utils'
 import ExternalStore from '@/services/ExternalStore'
-import { Gnosis_safe__factory } from '@/types/contracts'
+import { isValidMasterCopy } from '@/services/contracts/safeContracts'
+import { sameAddress } from '@/utils/addresses'
 import { invariant } from '@/utils/helpers'
-import type { JsonRpcProvider } from 'ethers'
 import Safe from '@safe-global/protocol-kit'
 import type { SafeVersion } from '@safe-global/safe-core-sdk-types'
 import type { SafeInfo } from '@safe-global/safe-gateway-typescript-sdk'
+import type { JsonRpcProvider } from 'ethers'
 import semverSatisfies from 'semver/functions/satisfies'
-import { isValidMasterCopy } from '@/services/contracts/safeContracts'
-import { sameAddress } from '@/utils/addresses'
-import { isPredictedSafeProps, isReplayedSafeProps } from '@/features/counterfactual/utils'
-import { SAFE_DEPLOYMENT } from '@/config/constants'
 
 export const isLegacyVersion = (safeVersion: string): boolean => {
   const LEGACY_VERSION = '<1.3.0'
@@ -39,34 +39,32 @@ type SafeCoreSDKProps = {
   undeployedSafe?: UndeployedSafe
 }
 
-const isInDeployments = (address: string, deployments: string | string[] | undefined): boolean => {
-  if (Array.isArray(deployments)) {
-    return deployments.some((deployment) => sameAddress(deployment, address))
-  }
-  return sameAddress(address, deployments)
-}
+// const isInDeployments = (address: string, deployments: string | string[] | undefined): boolean => {
+//   if (Array.isArray(deployments)) {
+//     return deployments.some((deployment) => sameAddress(deployment, address))
+//   }
+//   return sameAddress(address, deployments)
+// }
 
 // Safe Core SDK
 export const initSafeSDK = async ({
   provider,
   chainId,
   address,
-  version,
   implementationVersionState,
-  implementation,
   undeployedSafe,
 }: SafeCoreSDKProps): Promise<Safe | undefined> => {
   const providerNetwork = (await provider.getNetwork()).chainId
   if (providerNetwork !== BigInt(chainId)) return
 
-  const safeVersion = version ?? (await Gnosis_safe__factory.connect(address, provider).VERSION())
+  // const safeVersion = version ?? (await Gnosis_safe__factory.connect(address, provider).VERSION())
   let isL1SafeSingleton = chainId === chains.eth
   // If it is an official deployment we should still initiate the safeSDK
   if (true || !isValidMasterCopy(implementationVersionState)) {
-    const masterCopy = implementation
+    // const masterCopy = implementation
 
-    const safeL1Deployment = SAFE_DEPLOYMENT[chainId].safe || getSafeSingletonDeployments({ network: chainId, version: safeVersion })
-    const safeL2Deployment = SAFE_DEPLOYMENT[chainId].safeL2 || getSafeL2SingletonDeployments({ network: chainId, version: safeVersion })
+    // const safeL1Deployment = SAFE_DEPLOYMENT[chainId].safe || getSafeSingletonDeployments({ network: chainId, version: safeVersion })
+    // const safeL2Deployment = SAFE_DEPLOYMENT[chainId].safeL2 || getSafeL2SingletonDeployments({ network: chainId, version: safeVersion })
 
     // isL1SafeSingleton = isInDeployments(masterCopy, safeL1Deployment?.networkAddresses[chainId])
     // const isL2SafeMasterCopy = isInDeployments(masterCopy, safeL2Deployment?.networkAddresses[chainId])
@@ -94,11 +92,6 @@ export const initSafeSDK = async ({
     // We cannot initialize a Core SDK for replayed Safes yet.
     return
   }
-  console.log('---------------')
-  console.log(address)
-  console.log(isL1SafeSingleton)
-  
-  console.log(provider._getConnection().url)
   return Safe.init({
     provider: provider._getConnection().url,
     safeAddress: address,
