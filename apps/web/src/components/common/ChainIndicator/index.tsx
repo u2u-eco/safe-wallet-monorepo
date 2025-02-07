@@ -73,7 +73,7 @@ const ChainIndicator = ({
     >
       {showLogo && (
         <img
-          src={chainConfig.chainLogoUri ?? undefined}
+          src="https://img.cryptorank.io/coins/u_2_u_network_unicorn_ultra1732813549773.png"
           alt={`${chainConfig.chainName} Logo`}
           width={24}
           height={24}

@@ -1,9 +1,8 @@
-import { Stack, Box, Typography, Tooltip } from '@mui/material'
-import { formatDistanceToNow } from 'date-fns'
-import { getIndexingStatus } from '@safe-global/safe-gateway-typescript-sdk'
 import useAsync from '@/hooks/useAsync'
 import useChainId from '@/hooks/useChainId'
-import ExternalLink from '@/components/common/ExternalLink'
+import { Box, Stack, Tooltip, Typography } from '@mui/material'
+import { getIndexingStatus } from '@safe-global/safe-gateway-typescript-sdk'
+import { formatDistanceToNow } from 'date-fns'
 
 const STATUS_PAGE = 'https://status.safe.global'
 const MAX_SYNC_DELAY = 1000 * 60 * 5 // 5 minutes
@@ -59,11 +58,11 @@ const IndexingStatus = () => {
       <Stack direction="row" spacing={2} alignItems="center" px={3} py={1.5}>
         <Box width={10} height={10} borderRadius="50%" border={`2px solid var(--color-${status.color}-main)`} />
 
-        <ExternalLink href={STATUS_PAGE} noIcon flex={1}>
+        {/* <ExternalLink href={STATUS_PAGE} noIcon flex={1}> */}
           <Typography variant="body2">{status.text}</Typography>
-        </ExternalLink>
+        {/* </ExternalLink> */}
 
-        <ExternalLink href={STATUS_PAGE} sx={{ color: 'text.secondary', transform: 'translateY(3px)' }} />
+        {/* <ExternalLink href={STATUS_PAGE} sx={{ color: 'text.secondary', transform: 'translateY(3px)' }} /> */}
       </Stack>
     </Tooltip>
   )

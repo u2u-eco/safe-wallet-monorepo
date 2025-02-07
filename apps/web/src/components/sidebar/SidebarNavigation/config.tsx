@@ -113,22 +113,22 @@ export const settingsNavItems = [
     label: 'Notifications',
     href: AppRoutes.settings.notifications,
   },
-  {
-    label: 'Modules',
-    href: AppRoutes.settings.modules,
-  },
-  {
-    label: 'Safe Apps',
-    href: AppRoutes.settings.safeApps.index,
-  },
-  {
-    label: 'Data',
-    href: AppRoutes.settings.data,
-  },
-  {
-    label: 'Environment variables',
-    href: AppRoutes.settings.environmentVariables,
-  },
+  // {
+  //   label: 'Modules',
+  //   href: AppRoutes.settings.modules,
+  // },
+  // {
+  //   label: 'Safe Apps',
+  //   href: AppRoutes.settings.safeApps.index,
+  // },
+  // {
+  //   label: 'Data',
+  //   href: AppRoutes.settings.data,
+  // },
+  // {
+  //   label: 'Environment variables',
+  //   href: AppRoutes.settings.environmentVariables,
+  // },
 ]
 
 export const generalSettingsNavItems = [

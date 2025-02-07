@@ -31,6 +31,7 @@ export const initOnboard = async (
   currentChain: ChainInfo,
   rpcConfig: EnvState['rpc'] | undefined,
 ) => {
+  
   const { createOnboard } = await import('@/services/onboard')
   if (!getStore()) {
     setStore(createOnboard(chainConfigs, currentChain, rpcConfig))
