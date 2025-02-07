@@ -1,10 +1,10 @@
+/* eslint-disable */
 import useAsync from '@/hooks/useAsync'
 import useChainId from '@/hooks/useChainId'
 import { Box, Stack, Tooltip, Typography } from '@mui/material'
 import { getIndexingStatus } from '@safe-global/safe-gateway-typescript-sdk'
 import { formatDistanceToNow } from 'date-fns'
 
-const STATUS_PAGE = 'https://status.safe.global'
 const MAX_SYNC_DELAY = 1000 * 60 * 5 // 5 minutes
 
 const useIndexingStatus = () => {

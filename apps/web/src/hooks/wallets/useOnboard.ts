@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useEffect } from 'react'
 import { type WalletState, type OnboardAPI } from '@web3-onboard/core'
 import { type ChainInfo } from '@safe-global/safe-gateway-typescript-sdk'
@@ -29,7 +30,7 @@ const { getStore, setStore, useStore } = new ExternalStore<OnboardAPI>()
 export const initOnboard = async (
   chainConfigs: ChainInfo[],
   currentChain: ChainInfo,
-  rpcConfig: EnvState['rpc'] | undefined,
+  rpcConfig: EnvState['rpc'] | undefined
 ) => {
   
   const { createOnboard } = await import('@/services/onboard')

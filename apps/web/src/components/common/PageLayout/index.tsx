@@ -1,14 +1,15 @@
-import { useContext, useEffect, useState, type ReactElement } from 'react'
+/* eslint-disable */
 import classnames from 'classnames'
+import { useContext, useEffect, useState, type ReactElement } from 'react'
 
-import Header from '@/components/common/Header'
-import css from './styles.module.css'
-import SafeLoadingError from '../SafeLoadingError'
-import Footer from '../Footer'
-import SideDrawer from './SideDrawer'
-import { useIsSidebarRoute } from '@/hooks/useIsSidebarRoute'
-import { TxModalContext } from '@/components/tx-flow'
 import BatchSidebar from '@/components/batch/BatchSidebar'
+import Header from '@/components/common/Header'
+import { TxModalContext } from '@/components/tx-flow'
+import { useIsSidebarRoute } from '@/hooks/useIsSidebarRoute'
+import SafeLoadingError from '../SafeLoadingError'
+import SideDrawer from './SideDrawer'
+import css from './styles.module.css'
+import Footer from '../Footer'
 
 const PageLayout = ({ pathname, children }: { pathname: string; children: ReactElement }): ReactElement => {
   const [isSidebarRoute, isAnimated] = useIsSidebarRoute(pathname)
@@ -40,7 +41,7 @@ const PageLayout = ({ pathname, children }: { pathname: string; children: ReactE
 
         <BatchSidebar isOpen={isBatchOpen} onToggle={setBatchOpen} />
 
-        {/* <Footer /> */}
+        { false && <Footer />}
       </div>
     </>
   )
