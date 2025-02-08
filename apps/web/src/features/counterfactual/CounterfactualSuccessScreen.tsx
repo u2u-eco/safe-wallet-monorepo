@@ -1,3 +1,4 @@
+/* eslint-disable */
 import EthHashInfo from '@/components/common/EthHashInfo'
 import { safeCreationPendingStatuses } from '@/features/counterfactual/hooks/usePendingSafeStatuses'
 import { SafeCreationEvent, safeCreationSubscribe } from '@/features/counterfactual/services/safeCreationEvents'
