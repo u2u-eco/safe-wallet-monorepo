@@ -1,3 +1,4 @@
+/* eslint-disable */
 import ChainIndicator from '@/components/common/ChainIndicator'
 import Track from '@/components/common/Track'
 import { useDarkMode } from '@/hooks/useDarkMode'

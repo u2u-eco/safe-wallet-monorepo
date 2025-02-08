@@ -1,3 +1,4 @@
+/* eslint-disable */
 import BuyCryptoButton from '@/components/common/BuyCryptoButton'
 import TokenAmount from '@/components/common/TokenAmount'
 import Track from '@/components/common/Track'

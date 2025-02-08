@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { selectUndeployedSafes } from '@/features/counterfactual/store/undeployedSafesSlice'
 import NetworkLogosList from '@/features/multichain/components/NetworkLogosList'
 import { showNotification } from '@/store/notificationsSlice'

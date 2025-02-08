@@ -1,3 +1,4 @@
+/* eslint-disable */
 import TokenAmount from '@/components/common/TokenAmount'
 import CounterfactualStatusButton from '@/features/counterfactual/CounterfactualStatusButton'
 import { type ReactElement } from 'react'

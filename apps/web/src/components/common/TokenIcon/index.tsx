@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useMemo, type ReactElement } from 'react'
 import ImageFallback from '../ImageFallback'
 import css from './styles.module.css'

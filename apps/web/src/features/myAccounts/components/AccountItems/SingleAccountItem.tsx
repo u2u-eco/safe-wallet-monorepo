@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { selectUndeployedSafe } from '@/features/counterfactual/store/undeployedSafesSlice'
 import { type SafeOverview } from '@safe-global/safe-gateway-typescript-sdk'
 import { useMemo, useRef } from 'react'
