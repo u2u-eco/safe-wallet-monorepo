@@ -8,8 +8,10 @@ import CheckRoundedIcon from '@mui/icons-material/CheckRounded'
 import type { ChainInfo } from '@safe-global/safe-gateway-typescript-sdk'
 import NetworkLogosList from '../multichain/components/NetworkLogosList'
 import useAllAddressBooks from '@/hooks/useAllAddressBooks'
+import { useRouter } from 'next/navigation'
 
 const CounterfactualSuccessScreen = () => {
+	const router = useRouter()
   const [open, setOpen] = useState<boolean>(false)
   const [safeAddress, setSafeAddress] = useState<string>()
   const [chainId, setChainId] = useState<string>()
@@ -49,6 +51,13 @@ const CounterfactualSuccessScreen = () => {
       unsubFns.forEach((unsub) => unsub())
     }
   }, [])
+
+	const onAction = () => {
+		if(!isCFCreation && safeAddress && !isMultiChain && chain) {
+			router.push(`/home?safe=${chain?.chainName}:${safeAddress}`)
+		}
+		onClose()
+	}
 
   const onClose = () => {
     setChainId(undefined)
@@ -139,7 +148,7 @@ const CounterfactualSuccessScreen = () => {
           </Box>
         )}
 
-        <Button variant="contained" onClick={onClose} data-testid="cf-creation-lets-go-btn">
+        <Button variant="contained" onClick={onAction} data-testid="cf-creation-lets-go-btn">
           Let&apos;s go
         </Button>
       </DialogContent>
