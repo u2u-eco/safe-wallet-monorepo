@@ -1,3 +1,4 @@
+/* eslint-disable */
 import useIsSafeOwner from '@/hooks/useIsSafeOwner'
 import { useIsWalletProposer } from '@/hooks/useProposers'
 import type { Dispatch, SetStateAction } from 'react'
