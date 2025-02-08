@@ -290,7 +290,8 @@ const MultiAccountItem = ({ onLinkClick, multiSafeAccountItem }: MultiAccountIte
               }}
             >
               {totalFiatValue !== undefined ? (
-                <FiatValue value={totalFiatValue} />
+								null
+                // <FiatValue value={totalFiatValue} />
               ) : (
                 <Skeleton variant="text" sx={{ ml: 'auto' }} />
               )}

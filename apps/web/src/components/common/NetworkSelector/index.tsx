@@ -62,7 +62,7 @@ const ChainIndicatorWithFiatBalance = ({
     <ChainIndicator
       responsive={isSelected}
       chainId={chain.chainId}
-      fiatValue={safeOverview ? safeOverview.fiatTotal : undefined}
+      fiatValue={undefined} //safeOverview ? safeOverview.fiatTotal : undefined}
       inline
     />
   )

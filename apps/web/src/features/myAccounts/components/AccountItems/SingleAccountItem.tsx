@@ -210,7 +210,8 @@ const SingleAccountItem = ({ onLinkClick, safeItem, isMultiChainItem = false }: 
 
           <Typography variant="body2" sx={{ fontWeight: 'bold', textAlign: 'right', pl: 2 }}>
             {undeployedSafe ? null : safeOverview ? (
-              <FiatValue value={safeOverview.fiatTotal} />
+              // <FiatValue value={safeOverview.fiatTotal} />
+							null
             ) : (
               <Skeleton variant="text" sx={{ ml: 'auto' }} />
             )}

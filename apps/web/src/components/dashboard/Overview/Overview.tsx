@@ -90,7 +90,7 @@ const Overview = (): ReactElement => {
                 justifyContent: 'space-between',
               }}
             >
-              <Grid item>
+              {/* <Grid item>
                 <Typography
                   sx={{
                     color: 'primary.light',
@@ -118,7 +118,7 @@ const Overview = (): ReactElement => {
                     />
                   )}
                 </Typography>
-              </Grid>
+              </Grid> */}
 
               {safe.deployed && (
                 <Grid

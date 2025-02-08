@@ -70,7 +70,8 @@ const SafeHeader = (): ReactElement => {
             <Typography data-testid="currency-section" variant="body2" fontWeight={700}>
               {safe.deployed ? (
                 balances.fiatTotal ? (
-                  <FiatValue value={balances.fiatTotal} />
+									null
+                  // <FiatValue value={balances.fiatTotal} />
                 ) : (
                   <Skeleton variant="text" width={60} />
                 )
