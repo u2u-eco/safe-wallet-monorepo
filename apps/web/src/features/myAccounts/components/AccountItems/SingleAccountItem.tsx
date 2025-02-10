@@ -209,14 +209,14 @@ const SingleAccountItem = ({ onLinkClick, safeItem, isMultiChainItem = false }: 
 
           {!isMultiChainItem && <ChainIndicator chainId={chainId} responsive onlyLogo className={css.chainIndicator} />}
 
-          <Typography variant="body2" sx={{ fontWeight: 'bold', textAlign: 'right', pl: 2 }}>
+          {/* <Typography variant="body2" sx={{ fontWeight: 'bold', textAlign: 'right', pl: 2 }}>
             {undeployedSafe ? null : safeOverview ? (
               // <FiatValue value={safeOverview.fiatTotal} />
 							null
             ) : (
               <Skeleton variant="text" sx={{ ml: 'auto' }} />
             )}
-          </Typography>
+          </Typography> */}
         </Link>
       </Track>
       {!isMultiChainItem && (
