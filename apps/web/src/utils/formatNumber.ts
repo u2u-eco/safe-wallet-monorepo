@@ -1,6 +1,6 @@
 import memoize from 'lodash/memoize'
 
-const locale = typeof navigator !== 'undefined' ? navigator.language : undefined
+const locale = 'en-US' //typeof navigator !== 'undefined' ? navigator.language : undefined
 
 const _getNumberFormatter = (maximumFractionDigits?: number, compact?: boolean) => {
   return new Intl.NumberFormat(locale, {

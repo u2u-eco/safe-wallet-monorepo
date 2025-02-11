@@ -14,6 +14,7 @@ import NoTransactionsIcon from '@/public/images/transactions/no-transactions.svg
 import { useHasPendingTxs } from '@/hooks/usePendingTxs'
 import useSafeInfo from '@/hooks/useSafeInfo'
 import { useRecoveryQueue } from '@/features/recovery/hooks/useRecoveryQueue'
+import { GATEWAY_URL_PRODUCTION } from '@/config/constants'
 
 const NoQueuedTxns = () => {
   return <PagePlaceholder img={<NoTransactionsIcon />} text="Queued transactions will appear here" />
@@ -80,6 +81,9 @@ const PaginatedTxns = ({ useTxns }: { useTxns: typeof useTxHistory | typeof useT
 
   // Trigger the next page load
   const onNextPage = (pageUrl: string) => {
+    if (pageUrl && pageUrl.startsWith('http://safe-cgw.u2u.xyz/v1')) {
+      pageUrl = pageUrl.replaceAll('http://safe-cgw.u2u.xyz/v1', `${GATEWAY_URL_PRODUCTION}/v1`)
+    }
     setPages((prev) => prev.concat(pageUrl))
   }
 
