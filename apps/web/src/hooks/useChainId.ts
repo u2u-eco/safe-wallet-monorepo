@@ -6,8 +6,9 @@ import { selectSession } from '@/store/sessionSlice'
 import { parsePrefixedAddress } from '@/utils/addresses'
 import useWallet from './wallets/useWallet'
 import useChains from './useChains'
+import { DEFAULT_CHAIN_ID } from '@/config/constants'
 
-const defaultChainId = '39'
+const defaultChainId = DEFAULT_CHAIN_ID
 
 // Use the location object directly because Next.js's router.query is available only on mount
 const getLocationQuery = (): ParsedUrlQuery => {
