@@ -2,7 +2,6 @@ import { useMemo } from 'react'
 import { Box, Skeleton, Typography, Paper } from '@mui/material'
 import type { SafeBalanceResponse } from '@safe-global/safe-gateway-typescript-sdk'
 import useBalances from '@/hooks/useBalances'
-import FiatValue from '@/components/common/FiatValue'
 import TokenAmount from '@/components/common/TokenAmount'
 import SwapButton from '@/features/swap/components/SwapButton'
 import { AppRoutes } from '@/config/routes'
@@ -54,9 +53,9 @@ const AssetRow = ({ item, showSwap }: { item: SafeBalanceResponse['items'][numbe
       />
     </Box>
 
-    <Box flex={1} display={['none', 'block']} textAlign="right" pr={4}>
+    {/* <Box flex={1} display={['none', 'block']} textAlign="right" pr={4}>
       <FiatValue value={item.fiatBalance} />
-    </Box>
+    </Box> */}
 
     <Box my={-0.7}>
       {showSwap ? (
