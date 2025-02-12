@@ -1,15 +1,11 @@
-import type { ReactElement, ReactNode } from 'react'
-import { SvgIcon, Typography } from '@mui/material'
+import type { ReactElement } from 'react'
+import { SvgIcon } from '@mui/material'
 import GitHubIcon from '@mui/icons-material/GitHub'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import css from './styles.module.css'
 import { AppRoutes } from '@/config/routes'
 import packageJson from '../../../../package.json'
 import ExternalLink from '../ExternalLink'
-import MUILink from '@mui/material/Link'
-import { HELP_CENTER_URL } from '@/config/constants'
-import { useIsOfficialHost } from '@/hooks/useIsOfficialHost'
 
 const footerPages = [
   AppRoutes.welcome.index,
@@ -21,32 +17,32 @@ const footerPages = [
   AppRoutes.licenses,
 ]
 
-const FooterLink = ({ children, href }: { children: ReactNode; href: string }): ReactElement => {
-  return href ? (
-    <Link href={href} passHref legacyBehavior>
-      <MUILink>{children}</MUILink>
-    </Link>
-  ) : (
-    <MUILink>{children}</MUILink>
-  )
-}
+// const FooterLink = ({ children, href }: { children: ReactNode; href: string }): ReactElement => {
+//   return href ? (
+//     <Link href={href} passHref legacyBehavior>
+//       <MUILink>{children}</MUILink>
+//     </Link>
+//   ) : (
+//     <MUILink>{children}</MUILink>
+//   )
+// }
 
 const Footer = (): ReactElement | null => {
   const router = useRouter()
-  const isOfficialHost = useIsOfficialHost()
+  // const isOfficialHost = useIsOfficialHost()
 
   if (!footerPages.some((path) => router.pathname.startsWith(path))) {
     return null
   }
 
-  const getHref = (path: string): string => {
-    return router.pathname === path ? '' : path
-  }
+  // const getHref = (path: string): string => {
+  //   return router.pathname === path ? '' : path
+  // }
 
   return (
     <footer className={css.container}>
       <ul>
-        {isOfficialHost ? (
+        {/* {isOfficialHost ? (
           <>
             <li>
               <Typography variant="caption">&copy;2022–{new Date().getFullYear()} Core Contributors GmbH</Typography>
@@ -77,7 +73,14 @@ const Footer = (): ReactElement | null => {
           </>
         ) : (
           <li>This is an unofficial distribution of the app</li>
-        )}
+        )} */}
+
+        <li>
+          Powered by{' '}
+          <ExternalLink href="https://safe.global/" noIcon sx={{ span: { textDecoration: 'underline' } }}>
+            Safe
+          </ExternalLink>
+        </li>
 
         <li>
           <ExternalLink href={`${packageJson.homepage}/releases/tag/v${packageJson.version}`} noIcon>
