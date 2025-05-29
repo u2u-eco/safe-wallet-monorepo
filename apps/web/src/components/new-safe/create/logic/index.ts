@@ -127,15 +127,14 @@ export const estimateSafeCreationGas = async (
   undeployedSafe: UndeployedSafeProps,
   safeVersion?: SafeVersion,
 ): Promise<bigint> => {
-  const readOnlyProxyFactoryContract = await getReadOnlyProxyFactoryContract(safeVersion ?? getLatestSafeVersion(chain))
   const encodedSafeCreationTx = encodeSafeCreationTx(undeployedSafe, chain)
-
-  const gas = await provider.estimateGas({
+  const address = SAFE_DEPLOYMENT[chain.chainId].safeProxyFactoryAddress
+  const body = {
     from,
-    to: await readOnlyProxyFactoryContract.getAddress(),
+    to: address,
     data: encodedSafeCreationTx,
-  })
-
+  }
+  const gas = await provider.estimateGas(body)
   return gas
 }
 
