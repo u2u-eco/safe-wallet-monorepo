@@ -160,3 +160,60 @@ yarn install
 
 If you have any questions or run into issues, feel free to open a discussion or contact the maintainers. Happy coding!
 🚀
+
+# Frankie note
+
+- **Yarn**: Use Yarn version 4.5.3 or later
+
+to install it with the latest node version you can simply do
+
+```bash
+corepack enable
+```
+
+and then just run
+
+```bash
+yarn
+```
+
+# Build packages/safe-core-sdk-v1
+
+```bash
+cd packages/safe-core-sdk-v1
+# Use yarn 1.22.1
+npm install --global yarn@1.22.1
+yarn
+yarn build
+```
+
+```bash
+# Use node 20
+cd apps/web
+```
+
+```bash
+yarn
+```
+
+```bash
+yarn build
+```
+***Noted*** if build failed, please check openzepline contracts in types folder
+
+## ENV for apps/web
+NEXT_PUBLIC_GATEWAY_URL_PRODUCTION=https://safe-cgw.u2u.xyz/cgw
+NEXT_PUBLIC_GATEWAY_URL_STAGING=https://safe-cgw.u2u.xyz/cgw
+NEXT_PUBLIC_IS_PRODUCTION=true
+REVERSE_PROXY_UI_PORT=3000
+
+NEXT_PUBLIC_BRAND_LOGO=/images/u2u-network-logo.png
+NEXT_PUBLIC_BRAND_NAME=U2U Safe Wallet
+
+NEXT_PUBLIC_DEFAULT_CHAIN_ID=39
+
+
+# Final to run by forever
+```bash
+forever start -a --uid multisign-web -c "yarn serve" .
+```
