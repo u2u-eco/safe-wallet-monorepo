@@ -3,7 +3,7 @@ import { ContentSecurityPolicy, StrictTransportSecurity } from '@/config/securit
 import lightPalette from '@/components/theme/lightPalette'
 import darkPalette from '@/components/theme/darkPalette'
 
-const descriptionText = `${BRAND_NAME} is the most trusted smart account wallet on U2U.`
+const descriptionText = `${BRAND_NAME} is the most trusted smart account wallet on SSID.`
 const titleText = BRAND_NAME
 
 const MetaTags = ({ prefetchUrl }: { prefetchUrl: string }) => (
@@ -39,11 +39,11 @@ const MetaTags = ({ prefetchUrl }: { prefetchUrl: string }) => (
     <link rel="manifest" href="/safe.webmanifest" />
 
     {/* Favicons */}
-    <link rel="shortcut icon" href="/favicons/safe-logo-green.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/safe-logo-green.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/safe-logo-green.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/safe-logo-green.png" />
-    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#000" />
+    <link rel="shortcut icon" href="/favicons/logo.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/logo.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/logo.svg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/logo.svg" />
+    <link rel="mask-icon" href="/favicons/logo.svg" color="#000" />
   </>
 )
 

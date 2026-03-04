@@ -199,21 +199,23 @@ yarn
 ```bash
 yarn build
 ```
-***Noted*** if build failed, please check openzepline contracts in types folder
+
+**_Noted_** if build failed, please check openzepline contracts in types folder
 
 ## ENV for apps/web
+
 NEXT_PUBLIC_GATEWAY_URL_PRODUCTION=https://safe-cgw.u2u.xyz/cgw
 NEXT_PUBLIC_GATEWAY_URL_STAGING=https://safe-cgw.u2u.xyz/cgw
 NEXT_PUBLIC_IS_PRODUCTION=true
 REVERSE_PROXY_UI_PORT=3000
 
-NEXT_PUBLIC_BRAND_LOGO=/images/u2u-network-logo.png
-NEXT_PUBLIC_BRAND_NAME=U2U Safe Wallet
+NEXT_PUBLIC_BRAND_LOGO=/images/logo-ssid.svg
+NEXT_PUBLIC_BRAND_NAME=SSID Safe Wallet
 
 NEXT_PUBLIC_DEFAULT_CHAIN_ID=39
 
-
 # Final to run by forever
+
 ```bash
 forever start -a --uid multisign-web -c "yarn serve" .
 ```

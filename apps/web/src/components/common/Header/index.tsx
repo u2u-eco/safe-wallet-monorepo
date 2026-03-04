@@ -15,7 +15,7 @@ import SafeTokenWidget from '@/components/common/SafeTokenWidget'
 import NotificationCenter from '@/components/notification-center/NotificationCenter'
 import { AppRoutes } from '@/config/routes'
 import SafeLogo from '@/public/images/logo.svg'
-import SafeLogoMobile from '@/public/images/logo-no-text.svg'
+import SafeLogoMobile from '@/public/images/logo-ssid.svg'
 import Link from 'next/link'
 import useSafeAddress from '@/hooks/useSafeAddress'
 import BatchIndicator from '@/components/batch/BatchIndicator'
@@ -81,7 +81,11 @@ const Header = ({ onMenuToggle, onBatchToggle }: HeaderProps): ReactElement => {
 
       <div className={classnames(css.element, css.logoMobile)}>
         <Link href={logoHref} passHref>
-          {isOfficialHost ? <SafeLogoMobile alt="Safe logo" /> : BRAND_LOGO && <img src='/images/u2u-logo-mobile.svg' alt={BRAND_NAME} />}
+          {isOfficialHost ? (
+            <SafeLogoMobile alt="Safe logo" />
+          ) : (
+            BRAND_LOGO && <img src="/images/logo-ssid.svg" alt={BRAND_NAME} />
+          )}
         </Link>
       </div>
 

@@ -48,7 +48,7 @@ const TxStatusWidget = ({
     <Paper>
       <div className={css.header}>
         <Typography fontWeight="700" display="flex" alignItems="center" gap={1}>
-          <SafeLogo width={16} height={16} className={css.logo} />
+          <SafeLogo width={32} height={16} className={css.logo} />
           {isMessage ? 'Message' : 'Transaction'} status
         </Typography>
 

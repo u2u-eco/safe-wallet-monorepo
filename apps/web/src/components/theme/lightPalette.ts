@@ -5,13 +5,13 @@ const lightPalette = {
     disabled: '#DDDEE0',
   },
   primary: {
-    dark: '#3c3c3c',
-    main: '#121312',
-    light: '#636669',
+    dark: '#B81B20',
+    main: '#E22127',
+    light: '#FF6B70',
   },
   secondary: {
     dark: '#0FDA6D',
-    main: '#12FF80',
+    main: '#e22127',
     light: '#B0FFC9',
     background: '#EFFFF4',
   },

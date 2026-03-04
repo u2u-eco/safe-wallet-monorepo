@@ -8,9 +8,12 @@ const WalletLogin = ({ onLogin, onContinue }: { onLogin: () => void; onContinue:
   const wallet = useWallet()
   const connectWallet = useConnectWallet()
 
-  const onConnectWallet = () => {
-    connectWallet()
-    onLogin()
+  const onConnectWallet = async () => {
+    const wallets = await connectWallet()
+    // Only trigger onLogin if wallet connection was successful
+    if (wallets && wallets.length > 0) {
+      onLogin()
+    }
   }
 
   if (wallet !== null) {

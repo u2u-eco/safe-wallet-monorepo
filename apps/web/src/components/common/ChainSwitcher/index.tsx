@@ -44,9 +44,10 @@ const ChainSwitcher = ({
           <Typography noWrap>Switch to&nbsp;</Typography>
           <img
             src={
-              chain?.chainLogoUri?.includes('/media/chains')
-                ? '/images/safe-logo-green.png'
-                : (chain?.chainLogoUri ?? undefined)
+              chain?.chainLogoUri ?? undefined
+              // chain?.chainLogoUri?.includes('/media/chains')
+              //   ? '/images/safe-logo-green.png'
+              //   : (chain?.chainLogoUri ?? undefined)
             }
             alt={`${chain?.chainName} Logo`}
             width={24}
