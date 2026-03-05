@@ -7,7 +7,7 @@ export const IS_DEV = process.env.NODE_ENV === 'development'
 export const GATEWAY_URL_PRODUCTION =
   process.env.NEXT_PUBLIC_GATEWAY_URL_PRODUCTION || 'https://safe-client.safe.global'
 export const GATEWAY_URL_STAGING = process.env.NEXT_PUBLIC_GATEWAY_URL_STAGING || 'https://safe-client.staging.5afe.dev'
-export const DEFAULT_CHAIN_ID= process.env.NEXT_PUBLIC_DEFAULT_CHAIN_ID || '39'
+export const DEFAULT_CHAIN_ID = process.env.NEXT_PUBLIC_DEFAULT_CHAIN_ID || '39'
 // Magic numbers
 export const POLLING_INTERVAL = 15_000
 export const BASE_TX_GAS = 21_000
@@ -101,7 +101,7 @@ export const TWITTER_URL = 'https://twitter.com/safe'
 // Legal
 export const IS_OFFICIAL_HOST = process.env.NEXT_PUBLIC_IS_OFFICIAL_HOST === 'true'
 export const OFFICIAL_HOSTS = /app\.safe\.global|.+\.5afe\.dev|localhost:3000/
-export const BRAND_NAME = process.env.NEXT_PUBLIC_BRAND_NAME || (IS_OFFICIAL_HOST ? 'Safe{Wallet}' : 'U2U Safe Wallet')
+export const BRAND_NAME = process.env.NEXT_PUBLIC_BRAND_NAME || (IS_OFFICIAL_HOST ? 'Safe{Wallet}' : 'SSID Safe Wallet')
 export const BRAND_LOGO = process.env.NEXT_PUBLIC_BRAND_LOGO || ''
 
 // Risk mitigation (Blockaid)
@@ -121,8 +121,8 @@ type SAFE_CONTRACT = {
   safeL2: string
   safeProxyFactoryAddress: string
   safeSingletonAddress: string
-  safeWebAuthnSharedSignerAddress: string,
-  simulateTxAccessorAddress: string,
+  safeWebAuthnSharedSignerAddress: string
+  simulateTxAccessorAddress: string
   signMessageLibAddress: string
   safeWebAuthnSignerFactoryAddress: string
   multiSendAddress: string
@@ -132,8 +132,8 @@ type SAFE_CONTRACT = {
 }
 
 type SAFE_DEPLOYMENT_TYPE = {
-  [key: string]: SAFE_CONTRACT;
-};
+  [key: string]: SAFE_CONTRACT
+}
 
 export const SAFE_DEPLOYMENT: SAFE_DEPLOYMENT_TYPE = {
   '2484': {
@@ -148,7 +148,7 @@ export const SAFE_DEPLOYMENT: SAFE_DEPLOYMENT_TYPE = {
     multiSendAddress: '0x38869bf66a61cF6bDB996A6aE40D5853Fd43B526',
     multiSendCallOnlyAddress: '0x9641d764fc13c8B624c04430C7356C1C7C8102e2',
     fallbackHandlerAddress: '0xfd0732Dc9E303f09fCEf3a7388Ad10A83459Ec99',
-    createCallAddress: '0x9b35Af71d77eaf8d7e40252370304687390A1A52'
+    createCallAddress: '0x9b35Af71d77eaf8d7e40252370304687390A1A52',
   },
   '39': {
     safe: '0x41675C099F32341bf84BFc5382aF534df5C7461a',
@@ -162,6 +162,6 @@ export const SAFE_DEPLOYMENT: SAFE_DEPLOYMENT_TYPE = {
     multiSendAddress: '0x38869bf66a61cF6bDB996A6aE40D5853Fd43B526',
     multiSendCallOnlyAddress: '0x9641d764fc13c8B624c04430C7356C1C7C8102e2',
     fallbackHandlerAddress: '0xfd0732Dc9E303f09fCEf3a7388Ad10A83459Ec99',
-    createCallAddress: '0x9b35Af71d77eaf8d7e40252370304687390A1A52'
-  }
+    createCallAddress: '0x9b35Af71d77eaf8d7e40252370304687390A1A52',
+  },
 } as const

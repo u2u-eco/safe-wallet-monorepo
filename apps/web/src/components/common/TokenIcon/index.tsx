@@ -19,14 +19,15 @@ const TokenIcon = ({
   fallbackSrc?: string
 }): ReactElement => {
   const src = useMemo(() => {
-    return logoUri?.includes('/media/chains') ? '/images/safe-logo-green.png' : logoUri?.replace(COINGECKO_THUMB, COINGECKO_SMALL)
+    // return logoUri?.includes('/media/chains') ? '/images/safe-logo-green.png' : logoUri?.replace(COINGECKO_THUMB, COINGECKO_SMALL)
+    return logoUri ? logoUri : (logoUri?.replace(COINGECKO_THUMB, COINGECKO_SMALL) ?? undefined)
   }, [logoUri])
 
   return (
     <ImageFallback
       src={src}
       alt={tokenSymbol}
-      fallbackSrc={ fallbackSrc || FALLBACK_ICON}
+      fallbackSrc={fallbackSrc || FALLBACK_ICON}
       height={size}
       className={css.image}
       referrerPolicy="no-referrer"

@@ -188,7 +188,17 @@ export const ChooseOwner = ({
                     control={control}
                     name="threshold"
                     render={({ field }) => (
-                      <TextField data-testid="owner-number-dropdown" select {...field}>
+                      <TextField
+                        data-testid="owner-number-dropdown"
+                        select
+                        {...field}
+                        SelectProps={{
+                          MenuProps: {
+                            disableScrollLock: true,
+                            hideBackdrop: true,
+                          },
+                        }}
+                      >
                         {safe.owners.map((_, idx) => (
                           <MenuItem key={idx + 1} value={idx + 1}>
                             {idx + 1}

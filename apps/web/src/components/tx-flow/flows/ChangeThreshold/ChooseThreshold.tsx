@@ -96,7 +96,17 @@ export const ChooseThreshold = ({
                   }}
                 >
                   <Grid item>
-                    <TextField select {...field} error={isError}>
+                    <TextField
+                      select
+                      {...field}
+                      error={isError}
+                      SelectProps={{
+                        MenuProps: {
+                          disableScrollLock: true,
+                          hideBackdrop: true,
+                        },
+                      }}
+                    >
                       {safe.owners.map((_, idx) => (
                         <MenuItem data-testid="threshold-item" key={idx + 1} value={idx + 1}>
                           {idx + 1}

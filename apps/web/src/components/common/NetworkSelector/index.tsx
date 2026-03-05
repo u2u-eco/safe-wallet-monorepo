@@ -426,6 +426,7 @@ const NetworkSelector = ({
       IconComponent={ExpandMoreIcon}
       renderValue={(value) => renderMenuItem(value, true)}
       MenuProps={{
+        // hideBackdrop: true,
         transitionDuration: 0,
         sx: {
           '& .MuiPaper-root': {
